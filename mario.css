@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.game-board {
+width: 100%;    /* para visualizar*/
+height: 500px;
+border-bottom: 15px solid green;   /* ver ocupação de tela, em verde para simular a grama*/
+margin: 0 auto; /* centralizar div */
+position: relative; /*para que as imagens respeitem a delimitação do quadro*/
+overflow: hidden; /*retira todo elemento que sair da tela*/
+background: linear-gradient(#87CEEB, #E0F6FF);
+
+}
+
+.pipe {
+  position: absolute;  /*para que nenhuma imagem interfira na outra */
+  bottom: 0; /* fixa o tubo em baixo */
+  width: 80px; /* define tamanho do tubo */ 
+  animation: pipe-animation 1.5s infinite linear; /*vai usar a animação criada para o tubo, o "infinite" manteráa repetição dela, linear manterá ela flúida*/
+
+}
+
+.mario {
+  width: 150px; /* diminui o tamanho do Mário*/
+  position: absolute;
+  bottom: 0;
+}
+
+.mario-jump{
+  animation: mario-jump 500ms ease-out; /*"ease-out" manterá o pulo em nosso controle*/
+}
+
+.clouds{
+  position: absolute;
+  width: 550px;
+  animation: clouds-animation 20s infinite linear;
+}
+
+@keyframes pipe-animation{   /*vai criar a animação do tubo*/
+  from {
+    right: -80px; /* vai iniciar a direita, de fora para dentro da tela*/
+  }
+  to{
+    right: 100% /*vai finalizar ao fim da esquerda*/
+  }
+  
+}
+
+@keyframes mario-jump{
+  0%{  /*podemos escrever a animação em porcentagem para definir o estágio*/
+    bottom: 0; /*inicio do pulo (Mário no chão) */
+  }
+  40%{
+    bottom: 180px; /*meio do pulo (Mário no ar) */
+  }
+  50%{
+    bottom: 180px; /*meio do pulo (mantendo Mário no ar) */
+  }
+  60%{
+    bottom: 180px; /*meio do pulo (Mário no ar) */
+  }
+  100%{
+    bottom: 0; /*fim do pulo (Mário no chão novamente)*/
+  }
+}
+
+@keyframes clouds-animation{  /*vai criar a animação das nuvens */
+  from{
+    right: -550px;
+  }
+  to{
+    right: 100%;
+  }
+
+}
